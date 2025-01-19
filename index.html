@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whac-A-Mole</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <h1>Whac-A-Mole</h1>
+
+    <p>Select a mole image and difficulty before starting the game:</p>
+    <div class="mole-selection">
+        <label>
+            <input type="radio" name="mole" value="images/mole1.png"> Mole 1
+            <img src="images/mole1.png" alt="Mole 1" width="50">
+        </label>
+        <label>
+            <input type="radio" name="mole" value="images/mole2.png"> Mole 2
+            <img src="images/mole2.png" alt="Mole 2" width="50">
+        </label>
+    </div>
+
+    <div class="difficulty-selection">
+        <p>Select Difficulty:</p>
+        <label>
+            <input type="radio" name="difficulty" value="easy" checked> Easy
+        </label>
+        <label>
+            <input type="radio" name="difficulty" value="medium"> Medium
+        </label>
+        <label>
+            <input type="radio" name="difficulty" value="hard"> Hard
+        </label>
+    </div>
+
+    <div id="warning" style="display: none; color: red;">Please select a mole image and difficulty to start the game!</div>
+
+    <div class="controls">
+        <span class="score">Score: 0</span>
+        <span class="timer">Time: 40</span>
+    </div>
+    <div id="gameArea">
+        <div class="game-container"></div>
+    </div>
+    <button onclick="game.startGame()">Start Game</button>
+    <button onclick="game.resetGame()">Reset Game</button>
+
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>

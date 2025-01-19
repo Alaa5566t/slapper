@@ -1,0 +1,92 @@
+# Whac-A-Mole Game
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whac-A-Mole Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #gameArea {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            border: 2px solid #333;
+            background-color: #fff;
+        }
+        .mole {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('mole.png');
+            background-size: cover;
+            display: none;
+        }
+        .hit {
+            animation: slap 0.2s forwards;
+        }
+        @keyframes slap {
+            transform: scale(0.8);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Whac-A-Mole Game</h1>
+<div id="gameArea"></div>
+<button id="startButton">Start Game</button>
+<p id="score">Score: 0</p>
+
+<script>
+    const gameArea = document.getElementById('gameArea');
+    const startButton = document.getElementById('startButton');
+    const scoreDisplay = document.getElementById('score');
+    let score = 0;
+    let level = 1;
+    let moleInterval;
+
+    function createMole() {
+        const mole = document.createElement('div');
+        mole.classList.add('mole');
+        mole.style.top = Math.random() * (gameArea.clientHeight - 50) + 'px';
+        mole.style.left = Math.random() * (gameArea.clientWidth - 50) + 'px';
+        gameArea.appendChild(mole);
+        mole.style.display = 'block';
+
+        mole.addEventListener('click', function() {
+            score++;
+            scoreDisplay.textContent = 'Score: ' + score;
+            mole.classList.add('hit');
+            setTimeout(() => {
+                mole.remove();
+            }, 200);
+        });
+
+        setTimeout(() => {
+            mole.remove();
+        }, 2000);
+    }
+
+    function startGame() {
+        score = 0;
+        scoreDisplay.textContent = 'Score: 0';
+        level = 1;
+        moleInterval = setInterval(() => {
+            createMole();
+            if (level < 5) {
+                level++;
+            }
+        }, 1000 - (level * 100));
+    }
+
+    startButton.addEventListener('click', startGame);
+</script>
+
+</body>
+</html>
