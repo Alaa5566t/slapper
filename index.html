@@ -1,129 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whac-A-Mole Game</title>
-  <!-- Inline CSS Styles -->
-  <style>
-    /* General styling */
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Game container styling */
-    .game-container {
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    #game-board {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 20px auto;
-    }
-
-    .mole-hole {
-      width: 100px;
-      height: 100px;
-      background-color: #ccc;
-      border: 2px solid #333;
-      border-radius: 50%;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .mole {
-      width: 70px;
-      height: 70px;
-      background-color: brown;
-      border-radius: 50%;
-      position: absolute;
-      top: 15%;
-      left: 15%;
-      display: none;
-    }
-
-    /* Button styling */
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whac-A-Mole Game</title>
 </head>
 <body>
-  <div class="game-container">
-    <h1>Whac-A-Mole</h1>
-    <div id="game-board">
-      <!-- Mole holes will go here -->
+    <h1 class="score">SCORE: <span>00</span></h1>
+    <div class="board">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
     </div>
+    <div class="cursor"></div>
+
     <div class="controls">
-      <button id="start-button">Start Game</button>
-      <p>Score: <span id="score">0</span></p>
+        <button id="start-button">Start Game</button>
+        <button id="pause-button">Pause Game</button>
+        <button id="mute-button">Mute Sounds</button>
     </div>
-  </div>
-  <script>
-    // JavaScript game logic
-    const gameBoard = document.getElementById('game-board');
-    const scoreDisplay = document.getElementById('score');
-    const startButton = document.getElementById('start-button');
-    let score = 0;
-    let activeHole = null;
-    let gameInterval = null;
 
-    // Create holes
-    for (let i = 0; i < 9; i++) {
-      const hole = document.createElement('div');
-      hole.classList.add('mole-hole');
-      const mole = document.createElement('div');
-      mole.classList.add('mole');
-      hole.appendChild(mole);
-      gameBoard.appendChild(hole);
-
-      hole.addEventListener('click', () => {
-        if (hole === activeHole) {
-          score++;
-          scoreDisplay.textContent = score;
-          mole.style.display = 'none';
-          activeHole = null;
-        }
-      });
-    }
-
-    // Start the game
-    startButton.addEventListener('click', () => {
-      score = 0;
-      scoreDisplay.textContent = score;
-
-      if (gameInterval) clearInterval(gameInterval);
-
-      gameInterval = setInterval(() => {
-        if (activeHole) activeHole.firstChild.style.display = 'none';
-
-        const holes = document.querySelectorAll('.mole-hole');
-        const randomIndex = Math.floor(Math.random() * holes.length);
-        activeHole = holes[randomIndex];
-        activeHole.firstChild.style.display = 'block';
-      }, 1000);
-    });
-  </script>
+    <script src="msin1.js"></script>
 </body>
 </html>
