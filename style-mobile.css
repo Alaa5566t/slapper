@@ -39,7 +39,7 @@ body {
 }
 
 .hole .mole {
-    width: 50%;
+    width: 80%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
