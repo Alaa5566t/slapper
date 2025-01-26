@@ -85,9 +85,6 @@ button {
     width: 90px;
 }
 
-button:hover {
-    background-color: #45a049;
-}
 
 @media only screen and (max-width: 600px) {
     body {
