@@ -39,9 +39,9 @@ body {
 }
 
 .hole .mole {
-    width: 80%;
+    width: 120%;
     position: absolute;
-    left: 50%;
+    left: 80%;
     transform: translateX(-50%);
     bottom: 0;
     animation: rise .3s ease-out;
